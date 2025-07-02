@@ -24,11 +24,12 @@ public class DataBindingTest {
             Map<String, String> map = Map.of(
                     "name", "Zakaria",
                     "email", "znaji@gmail.com",
-                    "age", "25",
+                    "age", "15",
                     "date", "2025/10/10",
                     "tags", "HardWorker, QuickLearner, Punctual",
                     "salary", "1700"
             );
+            binder.setValidator(ctx.getBean(UserFormValidator.class));
             binder.setConversionService(ctx.getBean(ConversionService.class));
             binder.registerCustomEditor(LocalDate.class, new PropertyEditorSupport() {
                 @Override
@@ -42,14 +43,15 @@ public class DataBindingTest {
                 }
             });
             binder.bind(new MutablePropertyValues(map));
+            binder.validate();
             BindingResult result = binder.getBindingResult();
             System.out.println(form.getName());
             System.out.println(form.getEmail());
             System.out.println(form.getDate());
             System.out.println(form.getTags());
             System.out.println(form.getSalary());
-            System.out.println(result.getErrorCount());
-            //System.out.println(result.getFieldError("date").getDefaultMessage());
+            System.out.println("errors: " + result.getErrorCount());
+            result.getAllErrors().forEach(e -> System.out.println(e.getDefaultMessage()));
         } catch (Exception e) {
             System.out.println(e);
         }
