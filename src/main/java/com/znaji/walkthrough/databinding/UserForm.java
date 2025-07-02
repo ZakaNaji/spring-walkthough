@@ -1,5 +1,7 @@
 package com.znaji.walkthrough.databinding;
 
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 import org.springframework.format.annotation.NumberFormat;
 
 import java.math.BigDecimal;
@@ -8,6 +10,8 @@ import java.util.List;
 
 public class UserForm {
 
+    @NotNull(message = "{user.name}")
+    @Size(min = 10, max = 20, message = "{user.name}")
     private String name;
     private String email;
     private int age;
@@ -63,5 +67,17 @@ public class UserForm {
 
     public void setSalary(BigDecimal salary) {
         this.salary = salary;
+    }
+
+    @Override
+    public String toString() {
+        return "UserForm{" +
+                "name='" + name + '\'' +
+                ", email='" + email + '\'' +
+                ", age=" + age +
+                ", date=" + date +
+                ", tags=" + tags +
+                ", salary=" + salary +
+                '}';
     }
 }
