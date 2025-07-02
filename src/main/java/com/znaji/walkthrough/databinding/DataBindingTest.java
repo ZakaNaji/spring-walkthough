@@ -26,7 +26,8 @@ public class DataBindingTest {
                     "email", "znaji@gmail.com",
                     "age", "25",
                     "date", "2025/10/10",
-                    "tags", "HardWorker, QuickLearner, Punctual"
+                    "tags", "HardWorker, QuickLearner, Punctual",
+                    "salary", "1700"
             );
             binder.setConversionService(ctx.getBean(ConversionService.class));
             binder.registerCustomEditor(LocalDate.class, new PropertyEditorSupport() {
@@ -46,6 +47,7 @@ public class DataBindingTest {
             System.out.println(form.getEmail());
             System.out.println(form.getDate());
             System.out.println(form.getTags());
+            System.out.println(form.getSalary());
             System.out.println(result.getErrorCount());
             //System.out.println(result.getFieldError("date").getDefaultMessage());
         } catch (Exception e) {

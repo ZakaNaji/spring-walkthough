@@ -1,5 +1,8 @@
 package com.znaji.walkthrough.databinding;
 
+import org.springframework.format.annotation.NumberFormat;
+
+import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -10,6 +13,8 @@ public class UserForm {
     private int age;
     private LocalDate date;
     List<String> tags;
+    @NumberFormat(style = NumberFormat.Style.CURRENCY)
+    BigDecimal salary;
 
     public LocalDate getDate() {
         return date;
@@ -50,5 +55,13 @@ public class UserForm {
 
     public void setTags(List<String> tags) {
         this.tags = tags;
+    }
+
+    public BigDecimal getSalary() {
+        return salary;
+    }
+
+    public void setSalary(BigDecimal salary) {
+        this.salary = salary;
     }
 }
