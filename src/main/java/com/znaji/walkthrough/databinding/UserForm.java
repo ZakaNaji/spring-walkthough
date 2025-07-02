@@ -1,6 +1,7 @@
 package com.znaji.walkthrough.databinding;
 
 import java.time.LocalDate;
+import java.util.List;
 
 public class UserForm {
 
@@ -8,6 +9,7 @@ public class UserForm {
     private String email;
     private int age;
     private LocalDate date;
+    List<String> tags;
 
     public LocalDate getDate() {
         return date;
@@ -40,5 +42,13 @@ public class UserForm {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public List<String> getTags() {
+        return tags;
+    }
+
+    public void setTags(List<String> tags) {
+        this.tags = tags;
     }
 }
